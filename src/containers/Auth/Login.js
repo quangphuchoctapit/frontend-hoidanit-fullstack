@@ -9,8 +9,28 @@ import { FormattedMessage } from 'react-intl';
 class Login extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            username: '',
+            password: '',
+            isShowPassword: false
+        }
     }
 
+    handleOnChangeUsername = e => {
+        this.setState({ username: e.target.value })
+    }
+
+    handleOnChangePassword = e => {
+        this.setState({ password: e.target.value })
+    }
+
+    handleLogin = e => {
+        console.log(this.state)
+    }
+
+    handleShowHidePassword = () => {
+        this.setState({ isShowPassword: !this.state.isShowPassword })
+    }
 
     render() {
         return (
@@ -21,14 +41,32 @@ class Login extends Component {
                             <div className='col-12 text-login'>Login</div>
                             <div className='col-12 form-group login-input'>
                                 <label>Username:</label>
-                                <input type='text' className='form-control' placeholder='Enter your username' />
+                                <input type='text'
+                                    className='form-control'
+                                    placeholder='Enter your username'
+                                    value={this.state.username}
+                                    onChange={e => { this.handleOnChangeUsername(e) }}
+                                />
                             </div>
                             <div className='col-12 form-group login-input'>
                                 <label>Password:</label>
-                                <input type='password' className='form-control' placeholder='Enter your password' />
+                                <div className='custom-input-password'>
+                                    <input type={this.state.isShowPassword ? 'text' : 'password'}
+                                        className='form-control'
+                                        placeholder='Enter your password'
+                                        value={this.state.password}
+                                        onChange={e => { this.handleOnChangePassword(e) }}
+                                    />
+                                    <span onClick={() => { this.handleShowHidePassword() }}>
+                                        <i class={this.state.isShowPassword ?
+                                            "far fa-eye-slash" :
+                                            "far fa-eye"
+                                        }></i>
+                                    </span>
+                                </div>
                             </div>
                             <div className='col-12'>
-                                <button className='btn-login'>Login</button>
+                                <button className='btn-login' onClick={e => { this.handleLogin(e) }}>Login</button>
                             </div>
                             <div className='col-12 mt-3'>
                                 <span className='forgot-password'>Forgot your password?</span>
