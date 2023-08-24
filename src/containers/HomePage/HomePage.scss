@@ -1,0 +1,152 @@
+//reset slick slider css
+.slick-prev {
+    // border       : 1px solid orange !important;
+    left      : -10 !important;
+    z-index   : 1000 !important;
+    width     : 44px !important;
+    height    : 48px !important;
+    background: #fff !important;
+    border    : 2px solid #d1d0d0 !important;
+
+    &:hover {
+        background-color: #f4f4f4 !important;
+    }
+}
+
+.slick-next {
+    // border : 1px solid orange !important;
+    right        : -10 !important;
+    // z-index   : 1000 !important;
+    width        : 44px !important;
+    height       : 48px !important;
+    background   : #fff !important;
+    border       : 2px solid #d1d0d0 !important;
+
+    &:hover {
+        background-color: #f4f4f4 !important;
+    }
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-family: FontAwesome !important;
+    color      : red !important;
+}
+
+.section-share {
+    &.section-specialty {
+        background-color: #f5f5f5;
+    }
+
+    &.section-medical-facility {
+        background-color: white;
+    }
+
+    &.section-outstanding-doctor {
+        background-color: #f5f5f5;
+    }
+
+    &.section-handbook {
+        background-color: white;
+
+    }
+
+    .section-body {
+        .section-customize {
+            .bg-image {
+                width                 : 278px;
+                height                : 150px;
+                background-position   : center center;
+                background-repeat     : no-repeat;
+                background-size       : cover;
+                // background-color   : #eee;
+
+                &.section-specialty {
+                    background-image: url('../../assets/specialty/suckhoetamthan.jpg');
+
+                }
+
+                &.section-medical-facility {
+                    background-image: url('../../assets/medical-facility/benhvien-thu-cuc.png');
+                    background-size : contain;
+
+                }
+
+                &.section-outstanding-doctor {
+                    background-image: url('../../assets/outstanding-doctor/anh-dai-dien-bs.jpg');
+                    background-size : contain;
+                    width           : 120px;
+                    height          : 120px;
+                    border-radius   : 50%;
+
+
+                }
+
+                &.section-handbook {
+                    background-image: url('../../assets/handbook/handbook.png');
+                    background-size : contain;
+
+                }
+            }
+
+            h3 {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.section-share {
+    height: 380px;
+
+    .section-container {
+        margin        : 0 100px;
+        display       : flex;
+        flex-direction: column;
+
+        .section-header {
+            margin: 30px 0;
+
+            .title-section {
+                font-size  : 22px;
+                font-weight: 600;
+
+
+            }
+
+            .btn-section {
+                float           : right;
+                border          : none;
+                outline         : none;
+                padding         : 10px 15px;
+                display         : block;
+                background-color: #e3e0e0;
+                text-transform  : uppercase;
+
+                &:hover {
+                    background-color: #f4d50b;
+                    color           : white
+                }
+            }
+
+        }
+
+
+    }
+}
+
+.section-outstanding-doctor {
+    .outer-bg {
+        display        : flex;
+        justify-content: center;
+        margin-bottom  : 10px;
+        padding        : 5px;
+        gap            : 5px;
+    }
+
+    .customize-border {
+        border : 1px red solid;
+        padding: 20px;
+        margin : 0 5px;
+    }
+}
