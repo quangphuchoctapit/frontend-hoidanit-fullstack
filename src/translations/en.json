@@ -65,5 +65,9 @@
         "image": "Add Image",
         "save": "Save user",
         "edit": "Edit changes"
+    },
+    "homepage": {
+        "outstanding-doctor": "Most popular doctors recently",
+        "more-info": "More Information"
     }
 }
