@@ -9,7 +9,6 @@ import About from './Section/About.js';
 import HomeFooter from './Section/HomeFooter.js';
 
 
-
 import './HomePage.scss'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"

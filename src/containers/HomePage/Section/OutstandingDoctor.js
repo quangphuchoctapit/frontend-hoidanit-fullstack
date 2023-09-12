@@ -4,11 +4,37 @@ import { FormattedMessage } from 'react-intl';
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import * as actions from '../../../store/actions'
+import { LANGUAGES } from '../../../utils';
+
 
 
 class OutstandingDoctor extends Component {
-    render() {
+    constructor(props) {
+        super(props)
+        this.state = {
+            arrDoctors: [],
 
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapShot) {
+        if (prevProps.topDoctorsRedux !== this.props.topDoctorsRedux) {
+            this.setState({
+                arrDoctors: this.props.topDoctorsRedux
+            })
+        }
+    }
+
+    componentDidMount() {
+        this.props.loadTopDoctors()
+    }
+
+    render() {
+        let { language } = this.props
+        let arrDoctors = this.state.arrDoctors
+        arrDoctors = arrDoctors.concat(arrDoctors)
+        console.log('check arrDoctors ', arrDoctors)
         return (
             <div className='section-share section-outstanding-doctor'>
                 <div className='section-container'>
@@ -18,78 +44,35 @@ class OutstandingDoctor extends Component {
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
-                            <div className='section-customize'>
-                                <div className='customize-border'>
-                                    <div className='outer-bg'>
-                                        <div className='bg-image section-outstanding-doctor' />
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Giáo sư, Tiến sĩ Phúc Lê</div>
-                                        <div>Biceps 1</div>
-                                    </div>
-                                </div>
 
-                            </div>
-                            <div className='section-customize'>
-                                <div className='customize-border'>
+                            {arrDoctors && arrDoctors.length > 0 && arrDoctors.map(
+                                (item, index) => {
+                                    let imageBase64 = ''
+                                    if (item.image) {
+                                        imageBase64 = new Buffer(item.image, 'base64').toString('binary')
+                                    }
+                                    let nameVi = `${item.positionData.valueVi} -${item.lastName} - ${item.firstName}`
+                                    let nameEn = `${item.positionData.valueEn} - ${item.lastName} - ${item.firstName}`
 
-                                    <div className='outer-bg'>
-                                        <div className='bg-image section-outstanding-doctor' />
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Giáo sư, Tiến sĩ Phúc Lê</div>
-                                        <div>Biceps 2</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='section-customize'>
-                                <div className='customize-border'>
+                                    return (
+                                        <div className='section-customize' key={index}>
+                                            <div className='customize-border'>
+                                                <div className='outer-bg'>
+                                                    <div className='bg-image section-outstanding-doctor'
+                                                        style={{ backgroundImage: `url("${imageBase64}")` }}
 
-                                    <div className='outer-bg'>
-                                        <div className='bg-image section-outstanding-doctor' />
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Giáo sư, Tiến sĩ Phúc Lê</div>
-                                        <div>Biceps 3</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='section-customize'>
-                                <div className='customize-border'>
+                                                    />
+                                                </div>
+                                                <div className='position text-center'>
+                                                    <div>{language === LANGUAGES.VI ? nameVi : nameEn}</div>
+                                                    <div>Biceps 1</div>
+                                                </div>
+                                            </div>
 
-                                    <div className='outer-bg'>
-                                        <div className='bg-image section-outstanding-doctor' />
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Giáo sư, Tiến sĩ Phúc Lê</div>
-                                        <div>Biceps 4</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='section-customize'>
-                                <div className='customize-border'>
-
-                                    <div className='outer-bg'>
-                                        <div className='bg-image section-outstanding-doctor' />
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Giáo sư, Tiến sĩ Phúc Lê</div>
-                                        <div>Biceps 5</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='section-customize'>
-                                <div className='customize-border'>
-
-                                    <div className='outer-bg'>
-                                        <div className='bg-image section-outstanding-doctor' />
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Giáo sư, Tiến sĩ Phúc Lê</div>
-                                        <div>Biceps 6</div>
-                                    </div>
-                                </div>
-                            </div>
+                                        </div>
+                                    )
+                                }
+                            )}
                         </Slider>
                     </div>
 
@@ -103,12 +86,14 @@ class OutstandingDoctor extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
-        language: state.app.language
+        language: state.app.language,
+        topDoctorsRedux: state.admin.topDoctors,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        loadTopDoctors: () => dispatch(actions.fetchTopDoctor())
     };
 };
 
