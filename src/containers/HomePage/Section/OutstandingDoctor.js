@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import * as actions from '../../../store/actions'
 import { LANGUAGES } from '../../../utils';
+import { withRouter } from 'react-router';
 
 
 
@@ -28,6 +29,11 @@ class OutstandingDoctor extends Component {
 
     componentDidMount() {
         this.props.loadTopDoctors()
+    }
+
+    handleViewDetailDoctor = doctor => {
+        this.props.history.push(`/detail-doctor/${doctor.id}`)
+        console.log('check info', doctor)
     }
 
     render() {
@@ -55,7 +61,7 @@ class OutstandingDoctor extends Component {
                                     let nameEn = `${item.positionData.valueEn} - ${item.firstName} ${item.lastName}`
 
                                     return (
-                                        <div className='section-customize' key={index}>
+                                        <div className='section-customize' key={index} onClick={() => this.handleViewDetailDoctor(item)}>
                                             <div className='customize-border'>
                                                 <div className='outer-bg'>
                                                     <div className='bg-image section-outstanding-doctor'
@@ -97,4 +103,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor));

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './ManageDoctor.scss'
 import * as actions from '../../../store/actions'
@@ -12,11 +12,11 @@ import 'react-markdown-editor-lite/lib/index.css';
 
 // Initialize a markdown parser
 const mdParser = new MarkdownIt(/* Markdown-it options */);
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'dog', label: 'Dog' },
-    { value: 'meow', label: 'Meow' },
-]
+// const options = [
+//     { value: 'chocolate', label: 'Chocolate' },
+//     { value: 'dog', label: 'Dog' },
+//     { value: 'meow', label: 'Meow' },
+// ]
 
 
 class ManageDoctor extends Component {
