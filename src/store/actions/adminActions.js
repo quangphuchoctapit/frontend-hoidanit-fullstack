@@ -2,7 +2,7 @@ import {
     getAllCodeService, createNewUserService,
     getAllUsers, deleteUserService, editUserService,
     getTopDoctorHomeService, getAllDoctors,
-    saveDetailDoctorService
+    saveDetailDoctorService,
 } from '../../services/userService';
 import actionTypes from './actionTypes';
 import { toast } from 'react-toastify'

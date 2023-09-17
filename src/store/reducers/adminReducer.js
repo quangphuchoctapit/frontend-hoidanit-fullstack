@@ -7,7 +7,8 @@ const initialState = {
     positions: [],
     users: [],
     topDoctors: [],
-    allDoctors: []
+    allDoctors: [],
+    dataDetail: []
 }
 
 const adminReducer = (state = initialState, action) => {
