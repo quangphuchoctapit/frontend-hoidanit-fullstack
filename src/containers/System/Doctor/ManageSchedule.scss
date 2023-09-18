@@ -23,6 +23,10 @@
                 border       : 1px solid green;
                 padding      : 6px 10px;
 
+                &.active {
+                    background-color: #ffc829;
+                }
+
                 &:hover {
                     opacity: 0.8;
                 }
