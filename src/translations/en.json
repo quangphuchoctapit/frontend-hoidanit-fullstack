@@ -60,5 +60,11 @@
     "homepage": {
         "outstanding-doctor": "Most popular doctors recently",
         "more-info": "More Information"
+    },
+    "manage-schedule": {
+        "title": "Manage doctor's schedules",
+        "choose-doctor": "Choose a doctor",
+        "choose-date": "Choose date",
+        "save": "Save"
     }
 }
