@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 // import { FormattedMessage } from 'react-intl';
 import HomeHeader from '../../HomePage/HomeHeader';
 import './DetailDoctor.scss'
-import { getDetailInfoDoctor } from '../../../services/userService';
+import { getDetailInfoDoctor, getScheduleById } from '../../../services/userService';
 import { LANGUAGES } from '../../../utils/constant';
+import DoctorSchedule from './DoctorSchedule';
 
 
 class DetailDoctor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            detailDoctor: {
-
-            }
+            detailDoctor: {},
+            doctorSchedule: []
         }
     }
 
@@ -27,6 +27,14 @@ class DetailDoctor extends Component {
                     detailDoctor: res.data
                 })
             }
+            // try {
+            //     let schedule = await getScheduleById(this.props.match.params.id)
+            //     console.log('schedule: ', schedule)
+            //     this.setState({ doctorSchedule: schedule.data })
+            // }
+            // catch (e) {
+            //     console.log('error: ', e)
+            // }
         }
     }
 
@@ -34,7 +42,7 @@ class DetailDoctor extends Component {
 
     }
     render() {
-        let { detailDoctor } = this.state
+        let { detailDoctor, doctorSchedule } = this.state
         let { language } = this.props
         let nameVi = ''
         let nameEn = ''
@@ -42,7 +50,7 @@ class DetailDoctor extends Component {
             nameVi = `${detailDoctor.positionData.valueVi} - ${detailDoctor.lastName} ${detailDoctor.firstName}`
             nameEn = `${detailDoctor.positionData.valueEn} - ${detailDoctor.firstName} ${detailDoctor.lastName}`
         }
-        console.log('check state: ', this.state)
+        console.log('check state: ', this.state.scheduleDoctor)
         return (
             <>
                 <HomeHeader isShowBanner={false} />
@@ -70,7 +78,25 @@ class DetailDoctor extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className='schedule-doctor'></div>
+                    <div className='schedule-doctor'>
+                        <div className='content-left'>
+                            <DoctorSchedule doctorIdFromParent={detailDoctor && detailDoctor.id ? detailDoctor.id : -1} />
+                        </div>
+                        <div className='content-right'>
+
+                        </div>
+                        {/* {doctorSchedule && doctorSchedule.length > 0 &&
+                            doctorSchedule.map((item, index) => {
+                                console.log('date: ', item.date)
+
+                                return (
+                                    <div key={index}>
+                                        {item.date}
+                                    </div>
+                                )
+                            })
+                        } */}
+                    </div>
                     <div className='detail-info-doctor'>
                         {detailDoctor && detailDoctor.Markdown && detailDoctor.Markdown.contentMarkdown &&
                             <div dangerouslySetInnerHTML={{ __html: detailDoctor.Markdown.contentMarkdown }}>
