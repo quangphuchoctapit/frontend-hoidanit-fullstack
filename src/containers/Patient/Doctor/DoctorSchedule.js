@@ -12,7 +12,8 @@ class DoctorSchedule extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            allDays: []
+            allDays: [],
+            availableTime: []
         }
     }
 
@@ -29,9 +30,9 @@ class DoctorSchedule extends Component {
         for (let i = 0; i < 7; i++) {
             let object = {}
             if (language === LANGUAGES.VI) {
-                object.label = moment(new Date()).add(i, 'days').format('dddd - DD/MM')
+                object.label = moment(new Date()).add(i, 'days').format('dddd - DD/MM').charAt(0).toUpperCase() + moment(new Date()).add(i, 'days').format('dddd - DD/MM').slice(1);
             } else {
-                object.label = moment(new Date()).add(i, 'days').locale('en').format('ddd - DD/MM')
+                object.label = moment(new Date()).add(i, 'days').locale('en').format('ddd - DD/MM').charAt(0).toUpperCase() + moment(new Date()).add(i, 'days').locale('en').format('ddd - DD/MM').slice(1);
 
             }
             object.value = moment(new Date()).add(i, 'days').startOf('days').valueOf()
@@ -49,25 +50,31 @@ class DoctorSchedule extends Component {
         }
     }
 
-    handleOnChangeDate = async (e) => {
+    handleOnChangeSelect = async (e) => {
         // console.log(this.props.doctorIdFromParent)
         if (this.props.doctorIdFromParent && this.props.doctorIdFromParent !== -1) {
             let doctorId = this.props.doctorIdFromParent
             let date = e.target.value
             console.log('doctorid : ', doctorId, 'date: ', date)
             let res = await getScheduleDoctorByDate(doctorId, date)
+            if (res && res.errCode === 0) {
+                this.setState({
+                    availableTime: res.data ? res.data : []
+                })
+            }
             console.log(res)
         }
     }
 
     render() {
-        let { allDays } = this.state
+        let { allDays, availableTime } = this.state
+        let { language } = this.props
         return (
             <>
 
                 <div className='doctor-schedule-container'>
                     <div className='all-schedule'>
-                        <select onChange={(event) => this.handleOnChangeDate(event)}>
+                        <select onChange={(event) => this.handleOnChangeSelect(event)}>
                             {allDays && allDays.length > 0 &&
                                 allDays.map((item, index) => {
                                     return (
@@ -77,7 +84,23 @@ class DoctorSchedule extends Component {
                         </select>
                     </div>
                     <div className='all-available-time'>
+                        <div className='text-calendar'>
+                            <i className='fas fa-calendar-alt'><span>Lich kham</span></i>
+                        </div>
+                        <div className='time-content'>
+                            {availableTime && availableTime.length > 0 ?
+                                availableTime.map((item, index) => {
+                                    let timeDisplay = language === LANGUAGES.VI ?
+                                        item.timeTypeData.valueVi : item.timeTypeData.valueEn
+                                    return (
+                                        <button key={index}>{timeDisplay}</button>
+                                    )
+                                })
+                                :
+                                <div>This doctor has no appoiment at this time, please choose another time.</div>
+                            }
 
+                        </div>
                     </div>
                 </div>
             </>
