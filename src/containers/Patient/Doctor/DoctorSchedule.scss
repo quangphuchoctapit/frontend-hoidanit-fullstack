@@ -27,22 +27,45 @@
         }
 
         .time-content {
-            display  : flex;
-            gap      : 15px;
-            flex-wrap: wrap;
 
-            button {
-                background-color: #fff04b;
-                padding         : 10px 12px;
-                min-width       : 120px;
-                border          : none;
-                border-radius   : 5px;
-                font-weight     : 600;
 
-                &:hover {
-                    background-color: #45c3d2;
-                    color           : white;
+            .time-content-btns {
+                display  : flex;
+                gap      : 15px;
+                flex-wrap: wrap;
+
+                button {
+                    background-color: #fff04b;
+                    padding         : 10px 12px;
+                    min-width       : 120px;
+                    border          : none;
+                    border-radius   : 5px;
+                    font-weight     : 600;
+
+                    &:hover {
+                        background-color: #45c3d2;
+                        color           : white;
+                    }
                 }
+
+                .btn-vi {
+                    min-width: 120px;
+
+                }
+
+                .btn-en {
+                    min-width: 170px;
+                }
+
+                .no-schedule {
+                    font-style: italic;
+                    font-size : 14px;
+                }
+            }
+
+            .book-free {
+                margin-top: 10px;
+                font-size : 14px;
             }
         }
 

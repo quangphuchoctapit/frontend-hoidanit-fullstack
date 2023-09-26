@@ -13,7 +13,7 @@ class DetailDoctor extends Component {
         super(props);
         this.state = {
             detailDoctor: {},
-            doctorSchedule: []
+            currentDoctorId: -1
         }
     }
 
@@ -24,7 +24,8 @@ class DetailDoctor extends Component {
             console.log('check res ', res.data)
             if (res && res.errCode === 0) {
                 this.setState({
-                    detailDoctor: res.data
+                    detailDoctor: res.data,
+                    currentDoctorId: id
                 })
             }
             // try {
@@ -42,7 +43,7 @@ class DetailDoctor extends Component {
 
     }
     render() {
-        let { detailDoctor, doctorSchedule } = this.state
+        let { detailDoctor } = this.state
         let { language } = this.props
         let nameVi = ''
         let nameEn = ''
@@ -80,22 +81,13 @@ class DetailDoctor extends Component {
                     </div>
                     <div className='schedule-doctor'>
                         <div className='content-left'>
-                            <DoctorSchedule doctorIdFromParent={detailDoctor && detailDoctor.id ? detailDoctor.id : -1} />
+                            <DoctorSchedule doctorIdFromParent={this.state.currentDoctorId}
+                            />
                         </div>
                         <div className='content-right'>
 
                         </div>
-                        {/* {doctorSchedule && doctorSchedule.length > 0 &&
-                            doctorSchedule.map((item, index) => {
-                                console.log('date: ', item.date)
 
-                                return (
-                                    <div key={index}>
-                                        {item.date}
-                                    </div>
-                                )
-                            })
-                        } */}
                     </div>
                     <div className='detail-info-doctor'>
                         {detailDoctor && detailDoctor.Markdown && detailDoctor.Markdown.contentMarkdown &&
