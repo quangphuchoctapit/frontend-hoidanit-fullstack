@@ -310,3 +310,43 @@ export const fetchAllScheduleHours = () => {
         }
     }
 }
+
+export const fetchRequiredDoctorInfo = () => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch({
+                type: actionTypes.FETCH_REQUIRED_DOCTOR_INFO
+            })
+            let resPrice = await getAllCodeService('PRICE')
+            let resPayment = await getAllCodeService('PAYMENT')
+            let resProvince = await getAllCodeService('PROVINCE')
+
+            if (resPrice && resPrice.errCode === 0 &&
+                resPayment && resPayment.errCode === 0 &&
+                resProvince && resProvince.errCode === 0) {
+                let data = {
+                    resPrice: resPrice.data,
+                    resPayment: resPayment.data,
+                    resProvince: resProvince.data
+                }
+                dispatch(fetchRequiredDoctorInfoSuccess(data))
+            }
+            else {
+                dispatch(fetchRequiredDoctorInfoFailed())
+            }
+        } catch (e) {
+            console.log('fetchRequiredDoctorInfoFailed: ', e);
+            dispatch(fetchRequiredDoctorInfoFailed())
+        }
+    }
+}
+
+
+export const fetchRequiredDoctorInfoSuccess = (allRequiredData) => ({
+    type: actionTypes.FETCH_REQUIRED_DOCTOR_INFO_SUCCESS,
+    data: allRequiredData,
+})
+
+export const fetchRequiredDoctorInfoFailed = () => ({
+    type: actionTypes.FETCH_REQUIRED_DOCTOR_INFO_FAILED
+})
