@@ -73,6 +73,15 @@
             "no-schedule": "This doctor has no appoiment at this time, please choose another time.",
             "choose": "Choose",
             "book-free": "and book (free)"
+        },
+        "extra-info-doctor": {
+            "text-address": "Doctor's clinic",
+            "price": "Examination Price",
+            "re-examination-price": "Re-examination Price",
+            "payment-method-text": "Patients can pay by: ",
+            "show-detail-btn": "Show details",
+            "hide-detail-btn": "Hide details",
+            "follow-doctor-instructions": "Based on doctor's instructions"
         }
     },
     "admin": {

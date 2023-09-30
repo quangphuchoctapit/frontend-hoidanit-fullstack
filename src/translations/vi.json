@@ -73,6 +73,15 @@
             "no-schedule": "Bác sĩ không có lịch hẹn trong thời gian này, vui lòng chọn khoảng thời gian khác.",
             "choose": "Chọn",
             "book-free": "và đặt (miễn phí)"
+        },
+        "extra-info-doctor": {
+            "text-address": "Địa chỉ khám",
+            "price": "Giá khám",
+            "re-examination-price": "Giá tái khám",
+            "payment-method-text": "Người bệnh có thể thanh toán chi phí bằng hình thức: ",
+            "show-detail-btn": "Hiện bảng giá",
+            "hide-detail-btn": "Ẩn bảng giá",
+            "follow-doctor-instructions": "Theo chỉ định của bác sĩ"
         }
     },
     "admin": {

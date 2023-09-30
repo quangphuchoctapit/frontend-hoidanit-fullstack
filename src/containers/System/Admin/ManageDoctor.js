@@ -63,7 +63,6 @@ class ManageDoctor extends Component {
                 })
             }
             if (type === 'PRICE') {
-                console.log('checkk price: ', inputData)
                 inputData.map((item, index) => {
                     let object = {}
                     let label = (language === LANGUAGES.VI ? `${item.valueVi} VND` : `${item.valueEn} USD`)
@@ -75,7 +74,6 @@ class ManageDoctor extends Component {
                 )
             }
             if (type === 'PAYMENT') {
-                console.log('checkk payment: ', inputData)
                 inputData.map((item, index) => {
                     let object = {}
                     let label = (language === LANGUAGES.VI ? `${item.valueVi}` : `${item.valueEn}`)
@@ -87,7 +85,6 @@ class ManageDoctor extends Component {
                 )
             }
             if (type === 'PROVINCE') {
-                console.log('checkk province: ', inputData)
                 inputData.map((item, index) => {
                     let object = {}
                     let label = (language === LANGUAGES.VI ? `${item.valueVi}` : `${item.valueEn}`)

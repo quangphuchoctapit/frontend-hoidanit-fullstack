@@ -61,7 +61,6 @@ const adminReducer = (state = initialState, action) => {
             }
         case actionTypes.FETCH_ALL_USERS_SUCCESS:
             state.users = action.users
-            console.log('state.users: ', state.users)
             return {
                 ...state,
             }
@@ -102,7 +101,6 @@ const adminReducer = (state = initialState, action) => {
             }
         case actionTypes.FETCH_REQUIRED_DOCTOR_INFO_SUCCESS:
             state.allRequiredDoctorInfo = action.data
-            console.log('fetch required doctor info: ', action)
             return {
                 ...state
             }

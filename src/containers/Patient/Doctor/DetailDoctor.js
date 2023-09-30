@@ -52,7 +52,6 @@ class DetailDoctor extends Component {
             nameVi = `${detailDoctor.positionData.valueVi} - ${detailDoctor.lastName} ${detailDoctor.firstName}`
             nameEn = `${detailDoctor.positionData.valueEn} - ${detailDoctor.firstName} ${detailDoctor.lastName}`
         }
-        console.log('check state: ', this.state.scheduleDoctor)
         return (
             <>
                 <HomeHeader isShowBanner={false} />
