@@ -69,7 +69,8 @@ class DoctorExtraInfo extends Component {
                                         }
                                         {
                                             extraInfo && extraInfo.priceTypeData && language === LANGUAGES.EN &&
-                                            <NumberFormat value={extraInfo.priceTypeData.valueEn} displayType='text' thousandSeparator prefix={'$'} />
+                                            <NumberFormat value={extraInfo.priceTypeData.valueEn}
+                                                displayType='text' thousandSeparator prefix={'$'} />
                                         }
                                     </span>	&nbsp;<span className='toggleShowHideBtn' onClick={() => this.toggleShowHide()}>Xem chi tiết</span>
                                 </div>

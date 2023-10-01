@@ -4,8 +4,8 @@ import { FormattedMessage } from 'react-intl';
 import { LANGUAGES } from '../../../../utils/constant';
 import './BookingModal.scss'
 import { Button, Modal } from 'reactstrap'
-
-
+import ProfileDoctor from '../ProfileDoctor';
+import _ from 'lodash'
 
 class BookingModal extends Component {
     constructor(props) {
@@ -24,7 +24,8 @@ class BookingModal extends Component {
     }
 
     render() {
-
+        let { dataTime } = this.props
+        let doctorId = dataTime && !_.isEmpty(dataTime) ? dataTime.doctorId : ''
         return (
             <>
                 <Modal
@@ -41,10 +42,7 @@ class BookingModal extends Component {
                         <div className='booking-modal-body'>
                             {/* {JSON.stringify(this.props.dataTime)} */}
                             <div className='doctor-in4'>
-
-                            </div>
-                            <div className='price'>
-                                gia kham: 500,000vnd
+                                <ProfileDoctor doctorId={doctorId} />
                             </div>
                             <div className='row'>
                                 <div className='col-6 form-group'>
@@ -84,7 +82,6 @@ class BookingModal extends Component {
                         </div>
                     </div>
                 </Modal>
-                heelo man
             </>
         )
     }
