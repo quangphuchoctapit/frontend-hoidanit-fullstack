@@ -6,6 +6,7 @@ import { getScheduleDoctorByDate } from '../../../services/userService';
 import { LANGUAGES } from '../../../utils/constant';
 import moment from 'moment'
 import localization from 'moment/locale/vi'
+import BookingModal from './Modal/BookingModal';
 
 
 class DoctorSchedule extends Component {
@@ -13,7 +14,9 @@ class DoctorSchedule extends Component {
         super(props);
         this.state = {
             allDays: [],
-            allAvailableTime: []
+            allAvailableTime: [],
+            isOpenModalBooking: false,
+            dataTime: {}
         }
     }
 
@@ -91,8 +94,21 @@ class DoctorSchedule extends Component {
         }
     }
 
+    handleClickScheduleTime = time => {
+        this.setState({
+            isOpenModalBooking: !this.state.isOpenModalBooking,
+            dataTime: time
+        })
+    }
+
+    handleExitModalBooking = () => {
+        this.setState({
+            isOpenModalBooking: false
+        })
+    }
+
     render() {
-        let { allDays, allAvailableTime } = this.state
+        let { allDays, allAvailableTime, isOpenModalBooking, dataTime } = this.state
         let { language } = this.props
         return (
             <>
@@ -121,6 +137,7 @@ class DoctorSchedule extends Component {
                                                 item.timeTypeData.valueVi : item.timeTypeData.valueEn
                                             return (
                                                 <button key={index}
+                                                    onClick={() => { this.handleClickScheduleTime(item) }}
                                                     className={language === LANGUAGES.VI ? 'btn-vi' : 'btn-en'}
                                                 >{timeDisplay}</button>
                                             )
@@ -135,6 +152,9 @@ class DoctorSchedule extends Component {
                         </div>
                     </div>
                 </div>
+                <BookingModal isOpenModalBooking={isOpenModalBooking}
+                    handleExitModalBooking={this.handleExitModalBooking}
+                    dataTime={dataTime} />
             </>
         )
     }

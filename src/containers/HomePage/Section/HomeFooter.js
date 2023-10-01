@@ -11,6 +11,9 @@ class HomeFooter extends Component {
                 <p>&copy; 2023 Tommy Le. For more information, feel free to visit my Facebook&nbsp;
                     <a target="_blank" href='https://github.com/quangphuchoctapit'>
                         &#8594; Click here &#8592;
+                    </a><br />
+                    <a target='_blank' href='https://www.figma.com/file/Cl8fhCRsSYKn30INNBToK2/Untitled?type=design&node-id=0%3A1&mode=design&t=8KCAjCDqBsaUCHWu-1'>
+                        View Figma which I learned from youtube
                     </a>
                 </p>
             </div>
