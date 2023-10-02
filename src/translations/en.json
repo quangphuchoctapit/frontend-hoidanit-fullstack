@@ -82,6 +82,20 @@
             "show-detail-btn": "Show details",
             "hide-detail-btn": "Hide details",
             "follow-doctor-instructions": "Based on doctor's instructions"
+        },
+        "booking-modal": {
+            "title": "Examination booking form",
+            "fullName": "Full Name",
+            "phoneNumber": "Phone Number",
+            "email": "Email",
+            "birthday": "Date of Birth",
+            "address": "Address",
+            "reason": "Symptoms",
+            "gender": "Gender",
+            "cancel": "Cancel",
+            "confirm": "Confirm",
+            "free-to-book": "Don't hesistate to book. It's free!",
+            "price": "Examination Price"
         }
     },
     "admin": {

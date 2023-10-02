@@ -82,6 +82,20 @@
             "show-detail-btn": "Hiện bảng giá",
             "hide-detail-btn": "Ẩn bảng giá",
             "follow-doctor-instructions": "Theo chỉ định của bác sĩ"
+        },
+        "booking-modal": {
+            "title": "Thông tin đặt lịch khám bệnh",
+            "fullName": "Họ và Tên",
+            "email": "Email",
+            "phoneNumber": "Số điện thoại",
+            "birthday": "Ngày sinh",
+            "address": "Địa chỉ liên hệ",
+            "reason": "Lý do khám",
+            "gender": "Giới tính",
+            "cancel": "Hủy",
+            "confirm": "Lưu thông tin",
+            "free-to-book": "Miễn phí đặt lịch",
+            "price": "Giá khám"
         }
     },
     "admin": {
