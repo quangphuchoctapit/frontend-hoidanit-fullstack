@@ -6,6 +6,12 @@
 
         .content-left {
             width: 20%;
+
+            .img-doctor {
+                background-size    : cover;
+                background-repeat  : no-repeat;
+                background-position: center center;
+            }
         }
 
         .content-right {
@@ -18,8 +24,7 @@
             }
 
             .down {
-                font-size : 15px;
-                text-align: center;
+                font-size: 15px;
             }
         }
     }

@@ -5,6 +5,9 @@ import { LANGUAGES } from '../../../utils/constant';
 import './ProfileDoctor.scss'
 import { getProfileDoctorById } from '../../../services/userService'
 import NumberFormat from 'react-number-format'
+import _ from 'lodash'
+import moment from 'moment'
+import localization from 'moment/locale/vi'
 
 class ProfileDoctor extends Component {
     constructor(props) {
@@ -37,15 +40,35 @@ class ProfileDoctor extends Component {
             await this.getInfoDoctor(this.props.doctorId)
         }
     }
-    render() {
+
+    renderTimeBooking = (dataTime) => {
         let { language } = this.props
+        if (dataTime && !_.isEmpty(dataTime)) {
+            let time = language === LANGUAGES.VI ? dataTime.timeTypeData.valueVi : dataTime.timeTypeData.valueEn
+            let date = language === LANGUAGES.VI ?
+                moment.unix(+dataTime.date / 1000).format('dddd - DD/MM/YYYY') :
+                moment.unix(+dataTime.date / 1000).locale('en').format('ddd - MM/DD/YYYY');
+            return (
+                <>
+                    <div>{time} - {date}</div>
+                    <div>Mien phi dat lich</div>
+                </>
+            )
+        }
+
+
+    }
+
+    render() {
+        let { language, isShowDescriptionDoctor, dataTime } = this.props
         let { dataProfile } = this.state
         let nameVi = ''
         let nameEn = ''
         if (dataProfile && dataProfile.positionData) {
             nameVi = `${dataProfile.positionData.valueVi} - ${dataProfile.lastName} ${dataProfile.firstName}`
-            nameEn = `${dataProfile.positionData.valueEn} - ${dataProfile.firstName} ${dataProfile.lastName}`
+            nameEn = `${dataProfile.positionData.valueEn === 'None' ? 'Doctor' : dataProfile.positionData.valueEn} - ${dataProfile.firstName} ${dataProfile.lastName}`
         }
+        console.log('check time: ', dataTime)
         return (
             <>
                 <div className='profile-doctor-container'>
@@ -53,7 +76,7 @@ class ProfileDoctor extends Component {
                         <div className='content-left'>
                             <div className='img-doctor'
                                 style={{
-                                    background: `url(${dataProfile && dataProfile.image ? dataProfile.image : ''}) no-repeat center center`,
+                                    backgroundImage: `url(${dataProfile && dataProfile.image ? dataProfile.image : ''})`,
                                     width: '80px', height: '80px',
                                     borderRadius: '50%', margin: '10px 20px',
                                 }}
@@ -67,8 +90,16 @@ class ProfileDoctor extends Component {
                                 }
                             </div>
                             <div className='down'>
-                                {dataProfile && dataProfile.Markdown &&
-                                    <span>{dataProfile.Markdown.description}</span>
+                                {isShowDescriptionDoctor === true ?
+                                    <>
+                                        {dataProfile && dataProfile.Markdown &&
+                                            <span>{dataProfile.Markdown.description}</span>
+                                        }
+                                    </>
+                                    :
+                                    <>
+                                        {this.renderTimeBooking(dataTime)}
+                                    </>
                                 }
                             </div>
                         </div>
