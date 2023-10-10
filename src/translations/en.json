@@ -59,7 +59,9 @@
     },
     "homepage": {
         "outstanding-doctor": "Most popular doctors recently",
-        "more-info": "More Information"
+        "more-info": "More Information",
+        "popular-specialty": "Popular Specialties",
+        "more-info": "View Details"
     },
     "manage-schedule": {
         "title": "Manage doctor's schedules",
