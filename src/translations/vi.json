@@ -112,7 +112,9 @@
             "choose-clinic-address": "Chọn địa chỉ phòng khám",
             "choose-province": "Chọn tỉnh/thành",
             "choose-clinic-name": "Tên địa chỉ phòng khám",
-            "note": "Ghi chú"
+            "note": "Ghi chú",
+            "choose-specialty": "Chọn chuyên khoa",
+            "choose-clinic": "Chọn phòng khám"
         }
     }
 }

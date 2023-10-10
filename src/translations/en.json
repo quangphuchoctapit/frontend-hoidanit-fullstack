@@ -112,7 +112,9 @@
             "choose-clinic-address": "Select clinic's address",
             "choose-province": "Select province",
             "choose-clinic-name": "Select clinic's name",
-            "note": "Note"
+            "note": "Note",
+            "choose-specialty": "Select a specialty",
+            "choose-clinic": "Select a clinic"
         }
     }
 }
