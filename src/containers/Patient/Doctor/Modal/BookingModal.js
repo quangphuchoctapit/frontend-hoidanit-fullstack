@@ -52,6 +52,7 @@ class BookingModal extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapShot) {
+        console.log('check ddatatime: ', this.props.datatime)
         if (this.props.genders !== prevProps.genders) {
             this.setState({
                 genders: this.buildDataGender(this.props.genders)

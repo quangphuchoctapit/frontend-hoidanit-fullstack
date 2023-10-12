@@ -17,7 +17,14 @@ class DoctorExtraInfo extends Component {
     }
 
     async componentDidMount() {
-
+        if (this.props.doctorIdFromParent) {
+            let res = await getExtraInfoDoctorById(this.props.doctorIdFromParent);
+            if (res && res.data) {
+                this.setState({
+                    extraInfo: res.data
+                })
+            }
+        }
     }
 
     async componentDidUpdate(prevProps, prevState, snapShot) {
@@ -49,10 +56,10 @@ class DoctorExtraInfo extends Component {
                         </div>
 
                         <div className='text-clinic'>
-                            {extraInfo && extraInfo.nameClinic ? extraInfo.nameClinic : 'Phòng khám Bệnh viện Đại học Y Dược 1'}
+                            {extraInfo && extraInfo.nameClinic ? extraInfo.nameClinic : ''}
                         </div>
                         <div className='detail-address'>
-                            {extraInfo && extraInfo.nameClinic ? extraInfo.addressClinic : '20-22 Dương Quang Trung, Phường 12, Quận 10, Tp. HCM'}
+                            {extraInfo && extraInfo.nameClinic ? extraInfo.addressClinic : ''}
                         </div>
                     </div>
                     <div className='content-down'>
@@ -72,7 +79,7 @@ class DoctorExtraInfo extends Component {
                                             <NumberFormat value={extraInfo.priceTypeData.valueEn}
                                                 displayType='text' thousandSeparator prefix={'$'} />
                                         }
-                                    </span>	&nbsp;<span className='toggleShowHideBtn' onClick={() => this.toggleShowHide()}>Xem chi tiết</span>
+                                    </span>	&nbsp;<span className='toggleShowHideBtn' onClick={() => this.toggleShowHide()}><FormattedMessage id='patient.extra-info-doctor.show-detail-btn' /></span>
                                 </div>
                             </> :
                             <>
@@ -114,9 +121,23 @@ class DoctorExtraInfo extends Component {
                                         <FormattedMessage id='patient.extra-info-doctor.payment-method-text' />
 
                                         <span>
+                                            {/* {extraInfo && extraInfo.paymentTypeData && language === LANGUAGES.VI ?
+                                                (extraInfo.paymentTypeData.valueVi === 'Tất cả' ? 'Chấp nhận tất cả hình thức thanh toán' : (extraInfo.paymentTypeData.valueVi ? extraInfo.paymentTypeData.valueVi : '')) :
+                                                (extraInfo.paymentTypeData.valueEn === "All" ? "Accept all payment methods" : (extraInfo.paymentTypeData.valueEn ? extraInfo.paymentTypeData.valueEn : ''))} */}
                                             {extraInfo && extraInfo.paymentTypeData && language === LANGUAGES.VI ?
-                                                (extraInfo.paymentTypeData.valueVi === 'Tất cả' ? 'Chấp nhận tất cả hình thức thanh toán' : extraInfo.paymentTypeData.valueVi) :
-                                                (extraInfo.paymentTypeData.valueEn === "All" ? "Accept all payment methods" : extraInfo.paymentTypeData.valueEn)}
+                                                (
+                                                    extraInfo && extraInfo.paymentTypeData &&
+                                                        extraInfo.paymentTypeData.valueVi === 'Tất cả' ? 'Chấp nhận tất cả hình thức thanh toán' :
+                                                        extraInfo.paymentTypeData.valueVi
+                                                ) :
+                                                (
+                                                    extraInfo && extraInfo.paymentTypeData &&
+                                                        extraInfo.paymentTypeData.valueEn === 'All' ? 'Accept all payment methods' :
+                                                        extraInfo.paymentTypeData.valueEn
+                                                )
+                                            }
+
+
                                         </span>
                                     </div></div>
                                 </div>
