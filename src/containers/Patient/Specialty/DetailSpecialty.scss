@@ -1,11 +1,27 @@
 .detail-specialty-container {
+    background-color: #f0f0f0;
+
     .detail-specialty-body {
         margin: 0 100px;
     }
 
-    .description-specialty {
-        border: 1px solid red;
+    .location-select {
+        padding      : 10px 20px;
+        margin       : 15px 0 0px 0;
+        font-size    : 15px;
+        border       : none;
+        outline      : none;
+        border-radius: 3px;
 
+        option {
+            // cursor: pointer;
+
+        }
+    }
+
+    .description-specialty {
+        background-color: #fff;
+        padding         : 10px 20px;
     }
 
     .each-doctor {

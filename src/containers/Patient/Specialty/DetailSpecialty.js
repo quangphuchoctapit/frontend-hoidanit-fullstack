@@ -40,11 +40,21 @@ class DetailSpecialty extends Component {
                         )
                     })
                 }
+                let resProvinceData = resProvince.data
+                if (resProvinceData && !_.isEmpty(resProvinceData)) {
+                    resProvinceData.unshift({
+                        createdAt: null,
+                        keyMap: 'ALL',
+                        type: 'PROVINCE',
+                        valueEn: "ALL",
+                        valueVi: 'Toàn quốc'
+                    })
+                }
 
                 this.setState({
                     dataDetailSpecialty: res.data,
                     arrDoctorId: arrDoctorId,
-                    listProvince: resProvince.data
+                    listProvince: resProvinceData ? resProvinceData : []
                 })
             }
         }
@@ -54,8 +64,32 @@ class DetailSpecialty extends Component {
 
     }
 
-    handleOnChangeProvinceSelect = e => {
-        console.log(e.target.value)
+    handleOnChangeProvinceSelect = async (e) => {
+        console.log('check: ', e.target.value)
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+            let id = this.props.match.params.id
+            let location = e.target.value
+            let res = await getDetailSpecialtyById({
+                id: id,
+                location: location
+            })
+            if (res && res.errCode === 0) {
+                let arrDoctorId = []
+                if (res.data && !_.isEmpty(res.data)) {
+                    let newArrDoctorId = res.data.doctorSpecialty
+                    newArrDoctorId.map((item) => {
+                        return (
+                            arrDoctorId.push(item.doctorId)
+                        )
+                    })
+                }
+
+                this.setState({
+                    dataDetailSpecialty: res.data,
+                    arrDoctorId: arrDoctorId,
+                })
+            }
+        }
     }
 
     render() {
@@ -76,11 +110,11 @@ class DetailSpecialty extends Component {
                                 </div>
                             }
                         </div>
-                        <select className='location-select'>
+                        <select className='location-select' onChange={e => this.handleOnChangeProvinceSelect(e)}>
                             {listProvince && !_.isEmpty(listProvince) &&
                                 listProvince.map((item) => {
                                     return (
-                                        <option key={item.id} value={item.keyMap} onChange={e => this.handleOnChangeProvinceSelect(e)}>
+                                        <option key={item.id} value={item.keyMap}>
                                             {language === LANGUAGES.VI ? item.valueVi : item.valueEn}
                                         </option>
                                     )
@@ -100,6 +134,8 @@ class DetailSpecialty extends Component {
                                                 <ProfileDoctor
                                                     doctorId={item}
                                                     isShowDescriptionDoctor={true}
+                                                    isShowLinkDetail={true}
+                                                    isShowPrice={false}
                                                 />
                                             </div>
                                         </div>

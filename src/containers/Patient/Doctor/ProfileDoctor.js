@@ -8,6 +8,7 @@ import NumberFormat from 'react-number-format'
 import _ from 'lodash'
 import moment from 'moment'
 import localization from 'moment/locale/vi'
+import { Link } from 'react-router-dom'
 
 class ProfileDoctor extends Component {
     constructor(props) {
@@ -62,7 +63,7 @@ class ProfileDoctor extends Component {
     }
 
     render() {
-        let { language, isShowDescriptionDoctor, dataTime } = this.props
+        let { language, isShowDescriptionDoctor, dataTime, isShowLinkDetail, isShowPrice, doctorId } = this.props
         let { dataProfile } = this.state
         let nameVi = ''
         let nameEn = ''
@@ -84,6 +85,30 @@ class ProfileDoctor extends Component {
                                 }}
                             >
                             </div>
+                            {isShowPrice === true &&
+
+                                <div className='price'>
+                                    {/* <FormattedMessage id='' /> &nbsp; */}
+                                    <FormattedMessage id='patient.booking-modal.price' />:&nbsp;
+                                    {dataProfile && dataProfile.Doctor_Info && language === LANGUAGES.VI &&
+                                        <NumberFormat
+                                            value={dataProfile.Doctor_Info.priceTypeData.valueVi}
+                                            displayType='text'
+                                            thousandSeparator suffix={'đ'} />
+                                    }
+                                    {dataProfile && dataProfile.Doctor_Info && language === LANGUAGES.EN &&
+                                        <NumberFormat
+                                            value={dataProfile.Doctor_Info.priceTypeData.valueEn}
+                                            displayType='text'
+                                            thousandSeparator prefix={'$'} />
+                                    }
+                                </div>
+                            }
+                            {isShowLinkDetail === true &&
+                                <div className='more-detail'>
+                                    <Link to={`/detail-doctor/${doctorId}`}>...Xem them</Link>
+                                </div>
+                            }
                         </div>
                         <div className='content-right'>
                             <div className='up'>
@@ -106,22 +131,8 @@ class ProfileDoctor extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className='price'>
-                        {/* <FormattedMessage id='' /> &nbsp; */}
-                        <FormattedMessage id='patient.booking-modal.price' />:&nbsp;
-                        {dataProfile && dataProfile.Doctor_Info && language === LANGUAGES.VI &&
-                            <NumberFormat
-                                value={dataProfile.Doctor_Info.priceTypeData.valueVi}
-                                displayType='text'
-                                thousandSeparator suffix={'đ'} />
-                        }
-                        {dataProfile && dataProfile.Doctor_Info && language === LANGUAGES.EN &&
-                            <NumberFormat
-                                value={dataProfile.Doctor_Info.priceTypeData.valueEn}
-                                displayType='text'
-                                thousandSeparator prefix={'$'} />
-                        }
-                    </div>
+
+
                 </div>
             </>
         )
