@@ -29,14 +29,6 @@ class DetailDoctor extends Component {
                     currentDoctorId: id
                 })
             }
-            // try {
-            //     let schedule = await getScheduleById(this.props.match.params.id)
-            //     console.log('schedule: ', schedule)
-            //     this.setState({ doctorSchedule: schedule.data })
-            // }
-            // catch (e) {
-            //     console.log('error: ', e)
-            // }
         }
     }
 

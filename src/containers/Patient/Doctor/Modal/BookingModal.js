@@ -52,7 +52,7 @@ class BookingModal extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapShot) {
-        console.log('check ddatatime: ', this.props.datatime)
+        // console.log('check ddatatime: ', this.props.datatime)
         if (this.props.genders !== prevProps.genders) {
             this.setState({
                 genders: this.buildDataGender(this.props.genders)
@@ -96,7 +96,7 @@ class BookingModal extends Component {
     }
 
     handleConfirmBooking = async () => {
-        console.log('check sddatatime: ', this.props.dataTime)
+        // console.log('check sddatatime: ', this.props.dataTime)
         let timeString = this.renderTimeBooking(this.props.dataTime)
         let doctorName = this.buildDoctorName(this.props.dataTime)
         //validate input
@@ -153,24 +153,10 @@ class BookingModal extends Component {
 
         let timeString = this.renderTimeBooking(this.props.dataTime)
         let doctorName = this.buildDoctorName(this.props.dataTime)
-        console.log('check dataeitme: ', dataTime)
+        // console.log('check dataeitme: ', dataTime)
         //validate input
         let date = new Date(this.state.birthday).getTime()
         let doctorId = dataTime && !_.isEmpty(dataTime) ? dataTime.doctorId : ''
-        console.log('wtf check: ', {
-            fullName: this.state.fullName,
-            address: this.state.address,
-            selectedGender: this.state.selectedGender.value,
-            reason: this.state.reason,
-            email: this.state.email,
-            date: date,
-            timeType: this.state.timeType,
-            doctorId: this.state.doctorId,
-            phoneNumber: this.state.phoneNumber,
-            language: this.props.language,
-            timeString: timeString,
-            doctorName: doctorName
-        })
         return (
             <>
                 <Modal

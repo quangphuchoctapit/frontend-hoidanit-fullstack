@@ -32,7 +32,7 @@ class ProfileDoctor extends Component {
             result = res.data
         }
         else result = {}
-        console.log('result: ', result)
+        // console.log('result: ', result)
         return result
     }
     async componentDidUpdate(prevProps, prevState, snapShot) {
@@ -70,7 +70,7 @@ class ProfileDoctor extends Component {
             nameVi = `${dataProfile.positionData.valueVi} - ${dataProfile.lastName} ${dataProfile.firstName}`
             nameEn = `${dataProfile.positionData.valueEn === 'None' ? 'Doctor' : dataProfile.positionData.valueEn} - ${dataProfile.firstName} ${dataProfile.lastName}`
         }
-        console.log('check time: ', dataTime)
+        // console.log('check time: ', dataTime)
         return (
             <>
                 <div className='profile-doctor-container'>
