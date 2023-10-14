@@ -81,9 +81,10 @@
                 }
 
                 &.section-medical-facility {
-                    background-image: url('../../assets/medical-facility/benhvien-thu-cuc.png');
-                    background-size : contain;
-
+                    background-image   : url('../../assets/medical-facility/benhvien-thu-cuc.png');
+                    background-size    : contain !important;
+                    width              : 100%;
+                    // height          : auto !important;
                 }
 
                 &.section-outstanding-doctor {

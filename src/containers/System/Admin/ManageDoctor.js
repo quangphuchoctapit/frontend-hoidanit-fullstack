@@ -140,6 +140,7 @@ class ManageDoctor extends Component {
     componentDidMount() {
         this.props.fetchAllDoctors()
         this.props.fetchAllRequiredDoctorInfo()
+        this.props.fetchAllClinic()
     }
 
     componentDidUpdate(prevProps, prevState, snapShot) {
@@ -150,6 +151,13 @@ class ManageDoctor extends Component {
             })
         }
 
+        if (prevProps.allClinicData !== this.props.allClinicData) {
+            console.log('cehck oklla')
+            this.setState({
+                listClinic: this.buildDataInputSelect(this.props.allClinicData, 'CLINIC')
+            })
+        }
+
         if (prevProps.language !== this.props.language) {
             let dataSelect = this.buildDataInputSelect(this.props.allDoctors, 'USERS')
 
@@ -157,8 +165,8 @@ class ManageDoctor extends Component {
             let dataSelectPrice = this.buildDataInputSelect(resPrice, 'PRICE')
             let dataSelectPayment = this.buildDataInputSelect(resPayment, 'PAYMENT')
             let dataSelectProvince = this.buildDataInputSelect(resProvince, 'PROVINCE')
-            let dataSelectClinic = this.buildDataInputSelect(resClinic, 'CLINIC')
             let dataSelectSpecialty = this.buildDataInputSelect(resSpecialty, 'SPECIALTY')
+            let dataSelectClinic = this.buildDataInputSelect(resClinic, 'CLINIC')
 
             console.log('diferenret language')
             this.setState({
@@ -172,13 +180,15 @@ class ManageDoctor extends Component {
             })
         }
         if (prevProps.allRequiredDoctorInfo !== this.props.allRequiredDoctorInfo) {
-            let { resPayment, resPrice, resProvince, resClinic, resSpecialty } = this.props.allRequiredDoctorInfo
+            let { resPayment, resPrice, resProvince, resSpecialty } = this.props.allRequiredDoctorInfo
+            let resClinic = this.props.allClinicData.resClinic
+            console.log('check res resclinic: ', resClinic)
             let dataSelectPrice = this.buildDataInputSelect(resPrice, 'PRICE')
             let dataSelectPayment = this.buildDataInputSelect(resPayment, 'PAYMENT')
             let dataSelectProvince = this.buildDataInputSelect(resProvince, 'PROVINCE')
-            let dataSelectClinic = this.buildDataInputSelect(resClinic, 'CLINIC')
             let dataSelectSpecialty = this.buildDataInputSelect(resSpecialty, 'SPECIALTY')
-            console.log('check dataSelectSpecialty: ', dataSelectSpecialty)
+            let dataSelectClinic = this.buildDataInputSelect(resClinic, 'CLINIC')
+            console.log('check clinic : ', dataSelectClinic)
             this.setState({
                 listPrice: dataSelectPrice,
                 listPayment: dataSelectPayment,
@@ -323,8 +333,8 @@ class ManageDoctor extends Component {
 
     render() {
         // console.log('chekc state: ', this.state)
-        let { hasOldData, listSpecialty } = this.state
-        console.log("check specialty: ", this.state.specialtyId && this.state.selectedspecialty.value ? this.state.selectedspecialty.value : '')
+        let { hasOldData } = this.state
+        console.log("check state: ", this.state)
 
         return (
             <div className='manage-doctor-container'>
@@ -465,7 +475,8 @@ const mapStateToProps = state => {
     return {
         language: state.app.language,
         allDoctors: state.admin.allDoctors,
-        allRequiredDoctorInfo: state.admin.allRequiredDoctorInfo
+        allRequiredDoctorInfo: state.admin.allRequiredDoctorInfo,
+        allClinicData: state.admin.allClinic
     };
 };
 
@@ -474,6 +485,7 @@ const mapDispatchToProps = dispatch => {
         fetchAllDoctors: () => dispatch(actions.fetchAllDoctors()),
         fetchAllRequiredDoctorInfo: () => dispatch(actions.fetchRequiredDoctorInfo()),
         saveDetailDoctor: (data) => dispatch(actions.saveDetailDoctor(data)),
+        fetchAllClinic: () => dispatch(actions.fetchAllClinic())
     };
 };
 

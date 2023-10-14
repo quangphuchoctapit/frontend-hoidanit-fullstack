@@ -2,7 +2,8 @@ import {
     getAllCodeService, createNewUserService,
     getAllUsers, deleteUserService, editUserService,
     getTopDoctorHomeService, getAllDoctors,
-    saveDetailDoctorService, getAllSpecialties
+    saveDetailDoctorService, getAllSpecialties,
+    getAllClinic
 } from '../../services/userService';
 import actionTypes from './actionTypes';
 import { toast } from 'react-toastify'
@@ -344,7 +345,6 @@ export const fetchRequiredDoctorInfo = () => {
     }
 }
 
-
 export const fetchRequiredDoctorInfoSuccess = (allRequiredData) => ({
     type: actionTypes.FETCH_REQUIRED_DOCTOR_INFO_SUCCESS,
     data: allRequiredData,
@@ -352,4 +352,36 @@ export const fetchRequiredDoctorInfoSuccess = (allRequiredData) => ({
 
 export const fetchRequiredDoctorInfoFailed = () => ({
     type: actionTypes.FETCH_REQUIRED_DOCTOR_INFO_FAILED
+})
+
+export const fetchAllClinic = () => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch({
+                type: actionTypes.FETCH_ALL_CLINIC
+            })
+            let resClinic = await getAllClinic()
+            if (resClinic && resClinic.errCode === 0) {
+                let data = {
+                    resClinic: resClinic.data
+                }
+                dispatch(fetchAllClinicSuccess(data))
+            }
+            else {
+                dispatch(fetchAllClinicSuccess(fetchAllClinicFailed))
+            }
+        } catch (e) {
+            dispatch(fetchAllClinicSuccess(fetchAllClinicFailed))
+        }
+    }
+}
+
+
+export const fetchAllClinicSuccess = (allClinicData) => ({
+    type: actionTypes.FETCH_ALL_CLINIC_SUCCESS,
+    data: allClinicData
+})
+
+export const fetchAllClinicFailed = () => ({
+    type: actionTypes.FETCH_ALL_CLINIC_FAILED
 })
