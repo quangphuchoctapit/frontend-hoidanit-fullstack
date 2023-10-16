@@ -61,8 +61,7 @@
     "homepage": {
         "outstanding-doctor": "Most popular doctors recently",
         "more-info": "More Information",
-        "popular-specialty": "Popular Specialties",
-        "more-info": "View Details"
+        "popular-specialty": "Popular Specialties"
     },
     "manage-schedule": {
         "title": "Manage doctor's schedules",
@@ -134,5 +133,16 @@
             "choose-specialty": "Select a specialty",
             "choose-clinic": "Select a clinic"
         }
+    },
+    "doctor": {
+        "manage-patient": "Manage Patients' reservations",
+        "choose-date": "Choose date",
+        "index": "Index",
+        "booking-time-type": "Time",
+        "full-name": "Full Name",
+        "address": "Address",
+        "gender": "Gender",
+        "confirm": "Confirm",
+        "no-data": "No data available."
     }
 }

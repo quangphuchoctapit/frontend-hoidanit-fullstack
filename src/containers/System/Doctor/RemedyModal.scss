@@ -1,0 +1,16 @@
+.booking-modal-header {
+    border-bottom  : 1px solid #999;
+    padding        : 10px;
+    display        : flex;
+    justify-content: space-between;
+
+    .left {
+        font-size  : 15px;
+        font-weight: 600;
+    }
+
+    .right {
+        cursor : pointer;
+        padding: 4px;
+    }
+}

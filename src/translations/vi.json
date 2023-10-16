@@ -61,8 +61,7 @@
     "homepage": {
         "outstanding-doctor": "Bác sĩ nổi bật tuần qua",
         "more-info": "Xem thêm",
-        "popular-specialty": "Chuyên khoa phổ biến",
-        "more-info": "Xem thêm"
+        "popular-specialty": "Chuyên khoa phổ biến"
     },
     "manage-schedule": {
         "title": "Quản lí kế hoạch khám bệnh của bác sĩ",
@@ -134,5 +133,16 @@
             "choose-specialty": "Chọn chuyên khoa",
             "choose-clinic": "Chọn phòng khám"
         }
+    },
+    "doctor": {
+        "manage-patient": "Quản lí bệnh nhân khám bệnh",
+        "choose-date": "Chọn ngày",
+        "index": "Số thứ tự",
+        "booking-time-type": "Giờ khám",
+        "full-name": "Họ và Tên",
+        "address": "Địa chỉ liên hệ",
+        "gender": "Giới tính",
+        "confirm": "Xác nhận",
+        "no-data": "Không có thông tin."
     }
 }
