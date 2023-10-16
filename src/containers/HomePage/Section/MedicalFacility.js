@@ -26,12 +26,10 @@ class MedicalFacility extends Component {
 
     handleViewDetailClinic = (data) => {
         this.props.history.push(`/detail-clinic/${data.id}`)
-        console.log('check history: ', this.props)
     }
 
     render() {
         let { dataClinic } = this.state
-        console.log('check state: ', dataClinic)
         return (
             <div className='section-share section-medical-facility'>
                 <div className='section-container'>

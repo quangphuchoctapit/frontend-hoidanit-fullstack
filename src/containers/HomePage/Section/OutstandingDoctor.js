@@ -24,6 +24,7 @@ class OutstandingDoctor extends Component {
             this.setState({
                 arrDoctors: this.props.topDoctorsRedux
             })
+            console.log('check topdoctorredux:', this.props.topDoctorsRedux)
         }
     }
 
@@ -39,8 +40,6 @@ class OutstandingDoctor extends Component {
     render() {
         let { language } = this.props
         let arrDoctors = this.state.arrDoctors
-        // arrDoctors = arrDoctors.concat(arrDoctors)
-        console.log('check arrDoctors ', arrDoctors)
         return (
             <div className='section-share section-outstanding-doctor'>
                 <div className='section-container'>
@@ -71,7 +70,7 @@ class OutstandingDoctor extends Component {
                                                 </div>
                                                 <div className='position text-center'>
                                                     <div>{language === LANGUAGES.VI ? nameVi : nameEn}</div>
-                                                    <div>Biceps 1</div>
+                                                    <div>{item.Doctor_Info.specialtyTypeData ? item.Doctor_Info.specialtyTypeData.name : ''}</div>
                                                 </div>
                                             </div>
 

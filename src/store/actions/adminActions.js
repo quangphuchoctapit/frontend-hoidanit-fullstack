@@ -132,8 +132,6 @@ export const fetchAllUsersStart = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllUsers('ALL')
-            let res1 = await getTopDoctorHomeService(3)
-            console.log('check res doctor: ', res1)
             if (res && res.errCode === 0) {
                 let users = res.users.reverse()
                 dispatch(fetchAllUsersSuccess(users))
