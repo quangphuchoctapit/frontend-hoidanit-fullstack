@@ -5,22 +5,38 @@ import { LANGUAGES } from '../../../utils/constant';
 import HomeHeader from '../../../containers/HomePage/HomeHeader'
 import './DetailClinic.scss'
 import { getDetailClinicById } from '../../../services/userService'
+import ProfileDoctor from '../../../containers/Patient/Doctor/ProfileDoctor'
+import DoctorSchedule from '../../../containers/Patient/Doctor/DoctorSchedule'
+import DoctorExtraInfo from '../../../containers/Patient/Doctor/DoctorExtraInfo'
+import _ from 'lodash'
+
 
 class DetailClinic extends Component {
     constructor(props) {
         super(props);
         this.state = {
             dataDetailClinic: [],
-            imageBase64: ''
+            imageBase64: '',
+            arrDoctorId: []
         }
     }
 
     async componentDidMount() {
         let id = this.props.match.params.id
         let res = await getDetailClinicById(id)
+        console.log(' check res: ', res)
         if (res && res.errCode === 0) {
+            let arrDoctorId = []
+            let doctorIdData = res.data.doctorClinic
+            if (doctorIdData && !_.isEmpty(doctorIdData) > 0) {
+                doctorIdData.map((item) => (
+                    arrDoctorId.push(item.doctorId)
+                ))
+            }
+            // console.log("check arrDoctorId:", arrDoctorId)
             this.setState({
-                dataDetailClinic: res.data
+                dataDetailClinic: res.data,
+                arrDoctorId: arrDoctorId
             })
         }
     }
@@ -46,8 +62,8 @@ class DetailClinic extends Component {
     }
 
     render() {
-        let { dataDetailClinic } = this.state
-        console.log('check props: ', this.state.dataDetailClinic)
+        let { dataDetailClinic, arrDoctorId } = this.state
+        console.log('check state: ', this.state)
         return (
             <>
                 <HomeHeader />
@@ -60,9 +76,44 @@ class DetailClinic extends Component {
                                 <div className='detail-clinic-intro-address'>{dataDetailClinic.address}</div>
                             </div>
                         </div>
-                        <div className='detail-clinic-ads'>BookingCare là Nền tảng Y tế chăm sóc sức khỏe toàn diện hàng đầu Việt Nam kết nối người dùng với trên 200 bệnh viện - phòng khám uy tín, hơn 1,500 bác sĩ chuyên khoa giỏi và hàng nghìn dịch vụ, sản phẩm y tế chất lượng cao.
+                        <div className='detail-clinic-ads'><FormattedMessage id='patient.clinic.ads' />
                         </div>
                         <div className='detail-clinic-content' dangerouslySetInnerHTML={{ __html: dataDetailClinic.descriptionHTML }}>
+                        </div>
+                        <div className='detail-clinic-doctors'>
+                            {arrDoctorId && !_.isEmpty(arrDoctorId) ?
+                                arrDoctorId.map((item) =>
+                                (
+                                    <>
+                                        <div className='each-doctor'>
+                                            <div className='dt-content-left'>
+                                                <div className='profile-doctor'>
+                                                    <ProfileDoctor
+                                                        doctorId={item}
+                                                        isShowDescriptionDoctor={true}
+                                                        isShowLinkDetail={true}
+                                                        isShowPrice={false}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className='dt-content-right'>
+                                                <div className='doctor-schedule'>
+                                                    <DoctorSchedule
+                                                        doctorIdFromParent={item}
+                                                    />
+                                                </div>
+                                                <div className='doctor-extra-info'>
+                                                    <DoctorExtraInfo
+                                                        doctorIdFromParent={item}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
+                                ))
+                                :
+                                <div className='detail-clinic-no-doctor'><FormattedMessage id='patient.clinic.no-doctor-available' /></div>
+                            }
                         </div>
                     </div>
                 </div>

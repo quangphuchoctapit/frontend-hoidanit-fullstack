@@ -36,7 +36,8 @@
             "manage-handbook": "Manage Handbook"
         },
         "doctor": {
-            "manage-schedule": "Manage schedules"
+            "manage-schedule": "Manage schedules",
+            "manage-patient": "Manage patients"
         }
     },
     "manage-user": {
@@ -98,6 +99,23 @@
             "confirm": "Confirm",
             "free-to-book": "Don't hesistate to book. It's free!",
             "price": "Examination Price"
+        },
+        "clinic": {
+            "no-doctor-available": "There is no doctor available at the moment, please choose another clinic.",
+            "ads": "Bookingcare prouds to be one of the best medical center in Vietnam in terms of connecting patients with approximately 200 different hospitals, clinics with trustworthy credentials, and over than 1500 exceptional doctors with diverse services, and provides users the best experience.",
+            "more-info": "View Details",
+            "popular-clinics": "Popular medical clinics"
+        },
+        "handbook": {
+            "handbook": "Handbook",
+            "more-info": "View Details"
+        },
+        "about": {
+            "media": "How popular is Bookingcare nowadays?"
+        },
+        "home-footer": {
+            "intro": "2023 Tommy Le. For more information, feel free to visit my Facebook",
+            "click-here": "Click here"
         }
     },
     "admin": {

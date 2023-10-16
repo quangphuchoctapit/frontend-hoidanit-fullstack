@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 
 class About extends Component {
@@ -9,7 +9,7 @@ class About extends Component {
         return (
             <div className='section-share section-about'>
                 <div className='section-about-header'>
-                    Truyền thông nói về Tommy Le
+                    <FormattedMessage id='patient.about.media' />
                 </div>
                 <div className='section-about-content'>
                     <div className='content-left'>

@@ -1,0 +1,35 @@
+.manage-patient-container {
+    .m-p-title {
+        font-size     : 15px;
+        margin        : 10px 0;
+        text-align    : center;
+        text-transform: uppercase;
+    }
+
+    .manage-patient-body {
+        margin: 40px 20px;
+    }
+
+    .manage-patient-table {
+        margin: 40px 20px;
+
+        button {
+            outline      : none;
+            border       : none;
+            border-radius: 6px;
+        }
+
+        .btn-confirm {
+            margin-right    : 10px;
+            background-color: orange;
+        }
+
+        .btn-send-remedy {
+            background-color: #37e717;
+        }
+
+        .mp-no-data {
+            width: 100% !important;
+        }
+    }
+}

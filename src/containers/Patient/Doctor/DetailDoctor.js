@@ -22,7 +22,7 @@ class DetailDoctor extends Component {
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id
             let res = await getDetailInfoDoctor(id)
-            console.log('check res ', res.data)
+            console.log('check res ', res)
             if (res && res.errCode === 0) {
                 this.setState({
                     detailDoctor: res.data,

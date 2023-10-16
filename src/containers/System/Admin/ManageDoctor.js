@@ -226,7 +226,7 @@ class ManageDoctor extends Component {
             selectedNameClinic: this.state.selectedNameClinic,
             selectedAddressClinic: this.state.selectedAddressClinic,
             note: this.state.note,
-            clinicId: this.state.selectedClinic && this.state.selectedClinic.value ? this.state.selectedClinic.value : '',
+            clinicId: this.state.selectedClinic && this.state.selectedClinic.value ? this.state.selectedClinic.value : 'abc',
             specialtyId: this.state.selectedSpecialty && this.state.selectedSpecialty.value ? this.state.selectedSpecialty.value : ''
         })
         // console.log('check: ', this.state.selectedPrice.value,
@@ -257,6 +257,7 @@ class ManageDoctor extends Component {
             provinceId = res.data.Doctor_Info.provinceId
 
             clinicId = res.data.Doctor_Info.clinicId
+            console.log('clinic id: ', clinicId)
             specialtyId = res.data.Doctor_Info.specialtyId
 
 

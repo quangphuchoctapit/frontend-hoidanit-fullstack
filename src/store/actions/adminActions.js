@@ -241,7 +241,7 @@ export const fetchAllDoctors = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllDoctors()
-            console.log('check res adminactions: ', res)
+            // console.log('check res adminactions: ', res)
             if (res && res.errCode === 0) {
                 dispatch({
                     type: actionTypes.FETCH_ALL_DOCTORS_SUCCESS,
@@ -292,7 +292,7 @@ export const fetchAllScheduleHours = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllCodeService("TIME")
-            console.log('check res adminactions: ', res)
+            // console.log('check res adminactions: ', res)
             if (res && res.errCode === 0) {
                 dispatch({
                     type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_SUCCESS,

@@ -36,7 +36,8 @@
             "manage-handbook": "Quản lý cẩm nang"
         },
         "doctor": {
-            "manage-schedule": "Quản lí kế hoạch khám bệnh"
+            "manage-schedule": "Quản lí kế hoạch khám bệnh",
+            "manage-patient": "Quản lí bệnh nhân khám bệnh"
         }
     },
     "manage-user": {
@@ -98,6 +99,23 @@
             "confirm": "Lưu thông tin",
             "free-to-book": "Miễn phí đặt lịch",
             "price": "Giá khám"
+        },
+        "clinic": {
+            "no-doctor-available": "Hiện tại không có bác sĩ nào đang hoạt động tại clinic này, vui lòng chọn clinic khác.",
+            "ads": "Bookingcare là Nền tảng Y tế chăm sóc sức khỏe toàn diện hàng đầu Việt Nam kết nối người dùng với trên 200 bệnh viện - phòng khám uy tín, hơn 1,500 bác sĩ chuyên khoa giỏi và hàng nghìn dịch vụ, sản phẩm y tế chất lượng cao.",
+            "more-info": "Xem thêm",
+            "popular-clinics": "Cơ sở y tế nổi bật"
+        },
+        "handbook": {
+            "handbook": "Cẩm nang",
+            "more-info": "Xem thêm"
+        },
+        "about": {
+            "media": "Truyền thông nói gì về Tommy Le"
+        },
+        "home-footer": {
+            "intro": "2023 Tommy Le. Để biết thêm chi tiết, click vào đây 🙌",
+            "click-here": "Click vào đây"
         }
     },
     "admin": {
